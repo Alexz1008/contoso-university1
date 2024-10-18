@@ -5,6 +5,8 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
+  - checkout: self
+    persistCredentials: true
   - task: PowerPlatformToolInstaller@2
     inputs:
       DefaultVersion: true
