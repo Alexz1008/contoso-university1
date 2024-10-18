@@ -1,1 +1,20 @@
-# Example Pipeline
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+  - task: PowerPlatformToolInstaller@2
+    inputs:
+      DefaultVersion: true
+  - task: PowerPlatformPackSolution@2
+    inputs:
+      SolutionSourceFolder: 'ContosoDemo'
+      SolutionOutputFile: 'packed-solution/contoso_university_core.zip'
+      SolutionType: 'Both'
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: 'packed-solution'
+      ArtifactName: 'packed-solution'
+      publishLocation: 'Container'
