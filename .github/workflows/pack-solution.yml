@@ -22,3 +22,10 @@ jobs:
         with:
           name: packed-solution
           path: out/
+      - name: Import solution
+        uses: microsoft/powerplatform-actions/import-solution@v1
+        with:
+          environment-url: <YOUR TRIAL ENVIRONMENT URL HERE>
+          user-name: ${{ secrets.USERNAME }}
+          password-secret: ${{ secrets.PASSWORD }}
+          solution-file: contoso_university_core_managed.zip
